@@ -6,7 +6,7 @@ import './App.css';
 function App() {
 
   let [글제목, 글제목변경] = useState(['남자 코트 추천','강남 우동맛집','파이썬 독학']);
-  let [따봉, 따봉변경] = useState(0);
+  let [따봉, 따봉변경] = useState([0,0,0]);
   let [modal, setModal] = useState(false);
   
 
@@ -27,7 +27,7 @@ function App() {
         글제목변경(copy);
       }}>글 제목 바꿔버리깅</button>
       
-      <div className="list">
+      {/* <div className="list">
         <h4 onClick={() => {
             setModal(!modal);
 
@@ -41,7 +41,26 @@ function App() {
       <div className="list">
         <h4>{글제목[2]}</h4>
         <p>2월 17일 발행</p>
-      </div>
+      </div> */}
+
+      {
+        글제목.map(function (a, i){
+          return(
+            <div className="list" key={i}>
+              <h4 onClick={() => {
+                setModal(!modal);
+              }}>{글제목[i]}
+              </h4>
+              <span onClick={() => {
+                let copy = [...따봉]
+                copy[i] += 1
+                따봉변경(copy)
+              }}>👍{따봉[i]}</span>
+              <p>2월 17일 발행</p>
+            </div>
+          )
+        })
+      }
 
       {
         modal == true ? <Modal/> : null
