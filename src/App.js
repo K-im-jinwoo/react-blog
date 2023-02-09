@@ -14,13 +14,21 @@ function App() {
       <div className="black-nav">
         <div>ReactBlog</div>
       </div>
+
+      <button onClick={() => {
+        let copy = [...글제목]
+        글제목변경(copy.sort())
+      }}>가나다순정렬</button>
+
+      <button onClick={() => {
+        let copy = [...글제목];
+        copy[0] = '여자코트 추천';
+        글제목변경(copy);
+      }}>글 제목 바꿔버리깅</button>
+      
       <div className="list">
         <h4>{글제목[0]} <span onClick={()=>{ 따봉변경(따봉 + 1) }}>👍</span> {따봉} </h4>
         <p>2월 17일 발행</p>
-        <button onClick={() => {
-          글제목[0] = '여자코트 추천';
-          글제목변경(글제목)
-        }}>글 제목 바꿔버리깅</button>
       </div>
       <div className="list">
         <h4>{글제목[1]}</h4>
